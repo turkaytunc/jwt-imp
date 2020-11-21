@@ -20,6 +20,7 @@ app.get('/posts', async (req, res) => {
   res.json(posts);
 });
 
+// Users Route
 app.use('/users', usersRouter);
 
 app.listen(3000, () => {
