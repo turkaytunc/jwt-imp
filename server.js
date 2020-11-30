@@ -2,23 +2,15 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const app = express();
 const usersRouter = require('./users');
+const postsRouter = require('./posts');
 
 app.use(express.json());
-
-const posts = [
-  {
-    username: 'Turkay',
-    title: 'post-title',
-  },
-];
 
 app.get('/', async (req, res) => {
   res.send('HomePage');
 });
 
-app.get('/posts', async (req, res) => {
-  res.json(posts);
-});
+app.use('/posts', postsRouter);
 
 // Users Route
 app.use('/users', usersRouter);
