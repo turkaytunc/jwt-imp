@@ -13,7 +13,7 @@ const posts = [
 ];
 
 app.get('/', async (req, res) => {
-  res.send('Hello');
+  res.send('HomePage');
 });
 
 app.get('/posts', async (req, res) => {

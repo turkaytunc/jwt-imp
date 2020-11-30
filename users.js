@@ -27,10 +27,14 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   const user = users.find((user) => user.name === req.body.name);
   if (user == null) {
-    res.status(400).send('User not found');
+    return res.status(400).send('User not found');
   }
   try {
-    const isPasswordMatch = bcrypt.compare(req.body.password, user.password);
+    const isPasswordMatch = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    console.log(isPasswordMatch);
     if (isPasswordMatch) {
       res.send('Success');
     } else {
