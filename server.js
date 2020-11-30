@@ -24,5 +24,5 @@ app.get('/posts', async (req, res) => {
 app.use('/users', usersRouter);
 
 app.listen(3000, () => {
-  console.log(`server listen port ${3000}`);
+  console.log(`server listen http://localhost:${3000}`);
 });

@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 router.use(express.json());
@@ -34,9 +36,11 @@ router.post('/login', async (req, res) => {
       req.body.password,
       user.password
     );
-    console.log(isPasswordMatch);
+
     if (isPasswordMatch) {
-      res.send('Success');
+      const jwtUser = { name: user.name };
+      const accessToken = jwt.sign(jwtUser, process.env.ACCESS_TOKEN);
+      res.json({ accessToken });
     } else {
       res.send('Failed to login');
     }
