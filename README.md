@@ -6,4 +6,5 @@
 
 1. Open terminal
 2. Type "npm start dev"
-3. Server will listen port 3000 `http://localhost:3000`
+3. Server will listen port 3000
+4. `http://localhost:3000/signup`
